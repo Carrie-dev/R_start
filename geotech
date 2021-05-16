@@ -1,0 +1,59 @@
+install.packages("geotech")
+library(geotech)
+
+# Examples of Morh
+## Example code for Stress Transformation
+sigmaTrans(sigmaX = 80, sigmaZ = 120, tauXZ = 20, theta = 78)
+## Example code for Mohr Circle Calculations
+MohrCircle.calc(theta = 20, sigmaX = 80, sigmaZ = 120, tauXZ = 20)
+## Example code for Mohr Circle Plot
+MohrCircle.plot(sigmaX = 80, sigmaZ = 120, tauXZ = 20, metric = FALSE)
+## Example code for Principal Stresses
+sigma13(sigmaX = 80, sigmaZ = 120, tauXZ = 20)
+## Example code for Maximum In-Plane Shear Stress
+tauMax(sigmaX = 80, sigmaZ = 120, tauXZ = 20)
+
+# Description
+
+# These functions are used to determine the factor of safety against shear 
+# failure on slopes using infinite slope analyses (FSinf) or planar failure 
+# analyses (FSplanar).
+
+# Usage
+
+FSinf(c, phi, gamma, gammaW = NA, alpha, D, zw, metric)
+
+FSplanar(c, phi, alpha, L, W, u)
+
+fsi <- FSinf(23, 25.1, 9.1, gammaW = 9.81, 20, 1, 0.5, metric = FALSE)
+fs <- FSplanar(23, 25.1, 20, 0.4, 1,3)
+
+
+# Arguments
+
+# c   soil cohesion
+
+# phi soil friction angle (degrees)
+
+# gamma  soil unit weight
+
+# gammaW unit weight of water (default = 62.4 pcf for English units; 9.81 kN/m^3
+# for metric units)
+
+# alpha slope angle (angle of failure plane) for infinite slope analysis; angle 
+# of failure plane for planar failure analysis (deg)
+
+# D     depth to failure plane
+
+# zw    distance of groundwater table above failure plane (use 0 for a dry slope
+# and D for a submerged slope with parallel seepage)
+
+# metric logical variable: TRUE (for metric units: kN/m^3) or FALSE 
+# (for English units:pcf) [this is needed if gammaW is unspecified]
+
+# L length of failure plane (planar failure analysis)
+
+# W weight of slope per unit width (planar failure analysis)
+
+# u average pressure head on the failure plane (planar failure analysis)
+# 
